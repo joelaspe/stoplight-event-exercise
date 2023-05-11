@@ -1,12 +1,26 @@
 "use strict";
-
-var stopButton = document.querySelector("#stopButton");
 function changeRed() {
   var stopLight = document.querySelector("#stopLight");
   if (stopLight.className.includes("stop")) {
     stopLight.className = "bulb";
   } else {
     stopLight.className += " stop";
+  }
+}
+function changeYellow() {
+  var slowLight = document.querySelector("#slowLight");
+  if (slowLight.className.includes("slow")) {
+    slowLight.className = "bulb";
+  } else {
+    slowLight.className += " slow";
+  }
+}
+function changeGreen() {
+  var goLight = document.querySelector("#goLight");
+  if (goLight.className.includes("go")) {
+    goLight.className = "bulb";
+  } else {
+    goLight.className += " go";
   }
 }
 function logBulb(e) {
@@ -39,34 +53,18 @@ function mouseEnter(e) {
 function mouseExit(e) {
   console.log("Left " + e.target.textContent + " button!");
 }
+
+var stopButton = document.querySelector("#stopButton");
 stopButton.addEventListener("click", changeRed);
 stopButton.addEventListener("mouseenter", mouseEnter);
 stopButton.addEventListener("mouseleave", mouseExit);
 stopButton.addEventListener("click", logBulb);
-
 var slowButton = document.querySelector("#slowButton");
-function changeYellow() {
-  var slowLight = document.querySelector("#slowLight");
-  if (slowLight.className.includes("slow")) {
-    slowLight.className = "bulb";
-  } else {
-    slowLight.className += " slow";
-  }
-}
 slowButton.addEventListener("click", changeYellow);
 slowButton.addEventListener("mouseenter", mouseEnter);
 slowButton.addEventListener("mouseleave", mouseExit);
 slowButton.addEventListener("click", logBulb);
-
 var goButton = document.querySelector("#goButton");
-function changeGreen() {
-  var goLight = document.querySelector("#goLight");
-  if (goLight.className.includes("go")) {
-    goLight.className = "bulb";
-  } else {
-    goLight.className += " go";
-  }
-}
 goButton.addEventListener("click", changeGreen);
 goButton.addEventListener("mouseenter", mouseEnter);
 goButton.addEventListener("mouseleave", mouseExit);

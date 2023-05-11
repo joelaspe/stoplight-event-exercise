@@ -1,48 +1,30 @@
 "use strict";
-function changeRed() {
-  var stopLight = document.querySelector("#stopLight");
-  if (stopLight.className.includes("stop")) {
-    stopLight.className = "bulb";
-  } else {
-    stopLight.className += " stop";
-  }
-}
-function changeYellow() {
-  var slowLight = document.querySelector("#slowLight");
-  if (slowLight.className.includes("slow")) {
-    slowLight.className = "bulb";
-  } else {
-    slowLight.className += " slow";
-  }
-}
-function changeGreen() {
-  var goLight = document.querySelector("#goLight");
-  if (goLight.className.includes("go")) {
-    goLight.className = "bulb";
-  } else {
-    goLight.className += " go";
-  }
-}
-function logBulb(e) {
+function changeColor(e) {
   if (e.target.textContent == "Stop") {
     var stopLight = document.querySelector("#stopLight");
-    if (stopLight.className == "bulb") {
+    if (stopLight.classList.contains("stop")) {
+      stopLight.classList.remove("stop");
       console.log("Stoplight bulb off!");
     } else {
+      stopLight.classList.add("stop");
       console.log("Stoplight bulb on!");
     }
   } else if (e.target.textContent == "Slow") {
     var slowLight = document.querySelector("#slowLight");
-    if (slowLight.className == "bulb") {
+    if (slowLight.classList.contains("slow")) {
+      slowLight.classList.remove("slow");
       console.log("Slowlight bulb off!");
     } else {
+      slowLight.classList.add("slow");
       console.log("Slowlight bulb on!");
     }
   } else if (e.target.textContent == "Go") {
     var goLight = document.querySelector("#goLight");
-    if (goLight.className == "bulb") {
+    if (goLight.classList.contains("go")) {
+      goLight.classList.remove("go");
       console.log("Golight bulb off!");
     } else {
+      goLight.classList.add("go");
       console.log("Golight bulb on!");
     }
   }
@@ -55,17 +37,17 @@ function mouseExit(e) {
 }
 
 var stopButton = document.querySelector("#stopButton");
-stopButton.addEventListener("click", changeRed);
+stopButton.addEventListener("click", changeColor);
 stopButton.addEventListener("mouseenter", mouseEnter);
 stopButton.addEventListener("mouseleave", mouseExit);
-stopButton.addEventListener("click", logBulb);
+
 var slowButton = document.querySelector("#slowButton");
-slowButton.addEventListener("click", changeYellow);
+slowButton.addEventListener("click", changeColor);
 slowButton.addEventListener("mouseenter", mouseEnter);
 slowButton.addEventListener("mouseleave", mouseExit);
-slowButton.addEventListener("click", logBulb);
+
 var goButton = document.querySelector("#goButton");
-goButton.addEventListener("click", changeGreen);
+goButton.addEventListener("click", changeColor);
 goButton.addEventListener("mouseenter", mouseEnter);
 goButton.addEventListener("mouseleave", mouseExit);
-goButton.addEventListener("click", logBulb);
+
